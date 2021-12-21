@@ -15,7 +15,6 @@ import com.gitlab.aakumykov.gapless_audio_player.GaplessAudioPlayer;
 import com.gitlab.aakumykov.gapless_audio_player.SoundItem;
 import com.gitlab.aakumykov.gapless_audio_player.iAudioPlayer;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import permissions.dispatcher.NeedsPermission;
@@ -168,9 +167,7 @@ public class DemoActivity extends AppCompatActivity {
                 }
             });
 
-            gaplessAudioPlayer.play(Arrays.asList(
-                    new SoundItem("r1","Записанный звук", mRecordingFilePath)
-            ));
+            gaplessAudioPlayer.play(new SoundItem("r1","Записанный звук", mRecordingFilePath));
         }
     }
 

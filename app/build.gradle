@@ -45,7 +45,7 @@ dependencies {
     implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
     annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.1"
 
-    implementation 'com.github.aakumykov:gapless_audio_player_838:master-SNAPSHOT'
+    implementation 'com.github.aakumykov:gapless_audio_player_838:-SNAPSHOT'
 
     implementation 'com.github.aakumykov:level_view:0.0.1'
 }
