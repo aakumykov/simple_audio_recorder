@@ -85,7 +85,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
 
-    @NeedsPermission({ Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE })
+    @NeedsPermission({ Manifest.permission.RECORD_AUDIO })
     public void onStartButtonClicked() {
         hideInfo();
         hideError();
