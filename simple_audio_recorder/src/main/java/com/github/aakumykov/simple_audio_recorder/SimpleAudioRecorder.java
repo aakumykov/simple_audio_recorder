@@ -24,8 +24,8 @@ import com.github.aakumykov.simple_audio_recorder.recorder_service.iRecorderServ
 разрушения службы.
  */
 
-public class SimpleRecorder
-        implements iSimpleRecorder, DefaultLifecycleObserver
+public class SimpleAudioRecorder
+        implements iSimpleAudioRecorder, DefaultLifecycleObserver
 {
     public static final String TAG = "service_debug";
 
@@ -35,13 +35,13 @@ public class SimpleRecorder
     @Nullable private RecorderService mRecorderService;
 
     @NonNull private final Context mContext;
-    @NonNull private final iSimpleRecorderCallbacks mCallbacks;
+    @NonNull private final iSimpleAudioRecorderCallbacks mCallbacks;
     @Nullable private String mFilePath;
 
 
     // TODO: идентичность коллбеков...
-    public SimpleRecorder(@NonNull Context context,
-                          @NonNull iSimpleRecorderCallbacks callbacks) {
+    public SimpleAudioRecorder(@NonNull Context context,
+                               @NonNull iSimpleAudioRecorderCallbacks callbacks) {
 
         mContext = context;
         mCallbacks = callbacks;
@@ -71,7 +71,7 @@ public class SimpleRecorder
 
             @Override
             public void onRecorderServiceReleased() {
-                /*SimpleRecorder говорит, что отработал,
+                /*SimpleAudioRecorder говорит, что отработал,
                 когда сама служба остановилась, а не когда
                 в ней остановилась запись. Это хак против
                 позднего прихода значения амплитуды.*/

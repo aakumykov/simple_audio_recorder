@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.github.aakumykov.simple_audio_recorder">
+<manifest package="com.github.aakumykov.simple_audio_recorder"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <service
+            android:name=".recorder_service.RecorderService"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
 
 </manifest>
