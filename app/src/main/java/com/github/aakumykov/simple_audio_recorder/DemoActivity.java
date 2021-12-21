@@ -27,6 +27,8 @@ import permissions.dispatcher.RuntimePermissions;
 public class DemoActivity extends AppCompatActivity {
 
     private static final String TAG = DemoActivity.class.getSimpleName();
+    private static final String KEY_INFO_VIEW_TEXT = "INFO_VIEW_TEXT";
+    private static final String KEY_ERROR_VIEW_TEXT = "ERROR_VIEW_TEXT";
     private ActivityDemoBinding mViewBinding;
 
     @Nullable private iSimpleAudioRecorderCallbacks mSimpleAudioRecorderCallbacks;
@@ -34,6 +36,7 @@ public class DemoActivity extends AppCompatActivity {
     @Nullable private String mRecordingFilePath;
 
 
+    // Системные методы
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +78,19 @@ public class DemoActivity extends AppCompatActivity {
         mSimpleAudioRecorder = new SimpleAudioRecorder(this, mSimpleAudioRecorderCallbacks);
 
         getLifecycle().addObserver((DefaultLifecycleObserver) mSimpleAudioRecorder);
+
+        if (null != savedInstanceState) {
+            showInfo(savedInstanceState.getString(KEY_INFO_VIEW_TEXT));
+            showError(savedInstanceState.getString(KEY_ERROR_VIEW_TEXT));
+        }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_INFO_VIEW_TEXT, mViewBinding.infoView.getText().toString());
+        outState.putString(KEY_ERROR_VIEW_TEXT, mViewBinding.errorView.getText().toString());
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -85,6 +99,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
 
+    // "Кнопочные" методы
     @NeedsPermission({ Manifest.permission.RECORD_AUDIO })
     public void onStartButtonClicked() {
         hideInfo();
@@ -159,8 +174,7 @@ public class DemoActivity extends AppCompatActivity {
     }
 
 
-
-
+    // Внутренние методы
     private void showAmplitude(double amplitudeValue) {
         if (amplitudeValue > 100d)
             return;
