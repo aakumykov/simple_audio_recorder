@@ -54,8 +54,8 @@ public class DemoActivity extends AppCompatActivity {
 
             @Override
             public void onRecordingFinished(@NonNull String filePath) {
-//                Log.d(TAG, "onRecordingFinished()");
-                showInfo(filePath);
+                mRecordingFilePath = filePath;
+                showInfo("Записано в файл: "+filePath);
                 hideAmplitude();
             }
 
