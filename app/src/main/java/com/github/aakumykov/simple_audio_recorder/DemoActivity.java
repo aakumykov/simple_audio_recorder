@@ -118,12 +118,12 @@ public class DemoActivity extends AppCompatActivity {
             GaplessAudioPlayer gaplessAudioPlayer = new GaplessAudioPlayer(new iAudioPlayer.Callbacks() {
                 @Override
                 public void onStarted(@NonNull SoundItem soundItem) {
-
+                    mViewBinding.progressBar.animate().alpha(1f);
                 }
 
                 @Override
                 public void onStopped() {
-
+                    mViewBinding.progressBar.animate().alpha(0f);
                 }
 
                 @Override
@@ -138,7 +138,8 @@ public class DemoActivity extends AppCompatActivity {
 
                 @Override
                 public void onProgress(int position, int duration) {
-
+                    mViewBinding.progressBar.setMax(duration);
+                    mViewBinding.progressBar.setProgress(position);
                 }
 
                 @Override
