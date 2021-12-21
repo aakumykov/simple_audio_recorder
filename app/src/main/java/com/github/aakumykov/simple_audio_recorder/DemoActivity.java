@@ -21,6 +21,8 @@ import java.util.Random;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
+// FIXME: после поворота пробует воспроизводить старый файл, текущий теряется...
+
 @RuntimePermissions
 public class DemoActivity extends AppCompatActivity {
 
@@ -76,13 +78,11 @@ public class DemoActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         DemoActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
-
 
 
     @NeedsPermission({ Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE })
