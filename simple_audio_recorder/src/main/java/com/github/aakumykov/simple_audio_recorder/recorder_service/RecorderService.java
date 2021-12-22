@@ -86,6 +86,10 @@ public class RecorderService extends Service implements iRecorderService {
 
     @Override
     public void stopRecording() {
+
+        if (!mIsRecordingNow)
+            return;
+
         try {
             mRecorder.stopRecording();
             mIsRecordingNow = false;
