@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SimpleAudioRecorder демо</string>
+    <string name="permission_denied_dialog_title">Нет разрешения на запись звука</string>
+    <string name="permission_denied_dialog_message">Чтобы записывать голос, нужно дать разрешение на запись звука.</string>
+    <string name="permission_denied_dialog_positive_button_text">Открыть настройки</string>
+    <string name="permission_denied_dialog_negative_button_text">Отказаться</string>
+</resources>
