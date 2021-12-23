@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder_module;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.DefaultLifecycleObserver;
 
-import com.github.aakumykov.simple_audio_recorder.databinding.ActivityDemoBinding;
+import com.github.aakumykov.simple_audio_recorder_module.databinding.ActivityDemoBinding;
 import com.gitlab.aakumykov.gapless_audio_player.ErrorCode;
 import com.gitlab.aakumykov.gapless_audio_player.GaplessAudioPlayer;
 import com.gitlab.aakumykov.gapless_audio_player.SoundItem;

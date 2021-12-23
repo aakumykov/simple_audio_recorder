@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder.recorder_service;
+package com.github.aakumykov.simple_audio_recorder_module.recorder_service;
 
 import android.os.Binder;
 

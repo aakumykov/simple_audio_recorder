@@ -1,2 +1,2 @@
 rootProject.name = "simple_audio_recorder"
-include ':simple_audio_recorder'
+include ':simple_audio_recorder_module'

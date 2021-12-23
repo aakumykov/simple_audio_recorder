@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder_module;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.github.aakumykov.simple_audio_recorder.recorder_service.RecorderService;
-import com.github.aakumykov.simple_audio_recorder.recorder_service.RecorderServiceBinder;
-import com.github.aakumykov.simple_audio_recorder.recorder_service.iRecorderServiceCallbacks;
+import com.github.aakumykov.simple_audio_recorder_module.recorder_service.RecorderService;
+import com.github.aakumykov.simple_audio_recorder_module.recorder_service.RecorderServiceBinder;
+import com.github.aakumykov.simple_audio_recorder_module.recorder_service.iRecorderServiceCallbacks;
 
 // TODO: логгирование ошибки, если проигрывателю передаётся пустой путь
 

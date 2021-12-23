@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder.utils;
+package com.github.aakumykov.simple_audio_recorder_module.utils;
 
 public final class ArgumentChecker {
 

@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder.recorder_service;
+package com.github.aakumykov.simple_audio_recorder_module.recorder_service;
 
 import android.app.Service;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.github.aakumykov.simple_audio_recorder.utils.ArgumentChecker;
+import com.github.aakumykov.simple_audio_recorder_module.utils.ArgumentChecker;
 import com.gitlab.aakumykov.exception_utils_module.ExceptionUtils;
 
 import java.io.File;

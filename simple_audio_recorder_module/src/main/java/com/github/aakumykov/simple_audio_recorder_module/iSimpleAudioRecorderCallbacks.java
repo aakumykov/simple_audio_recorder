@@ -1,4 +1,4 @@
-package com.github.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder_module;
 
 // TODO: коллбеки-то общие со службой (или классом рекодера в службе?)...
 
