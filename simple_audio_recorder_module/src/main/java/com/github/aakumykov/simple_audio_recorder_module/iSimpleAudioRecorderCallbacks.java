@@ -8,5 +8,11 @@ public interface iSimpleAudioRecorderCallbacks {
     void onRecordingStarted();
     void onRecordingFinished(@NonNull String filePath);
     void onRecordingError(@NonNull String errorMsg);
+
+    /**
+     * Коллбек, вызывающийся при изменении амплитуды входящего сигнала микрофона.
+     * @param value Значение амплитуды от 0 до 100.
+     *              Иногда проскакивает большое отрицательное значение (-2.147483648E9).
+     */
     void onAmplitudeChanged(double value);
 }
