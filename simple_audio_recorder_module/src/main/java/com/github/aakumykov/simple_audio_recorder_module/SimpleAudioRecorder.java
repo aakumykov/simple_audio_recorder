@@ -139,8 +139,10 @@ public class SimpleAudioRecorder
     @Override
     public void stopRecording() {
         if (null != mRecorderService)
-            if (mRecorderService.isRecordingNow())
+            if (mRecorderService.isRecordingNow()) {
                 mRecorderService.stopRecording();
+                unbindFromService();
+            }
     }
 
     @Override

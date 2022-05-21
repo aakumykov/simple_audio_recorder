@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/simple_audio_recorder_module" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
