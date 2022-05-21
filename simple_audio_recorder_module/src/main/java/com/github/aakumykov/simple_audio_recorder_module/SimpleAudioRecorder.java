@@ -108,10 +108,10 @@ public class SimpleAudioRecorder
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
 
-        if (null != mRecorderService)
+        /*if (null != mRecorderService)
             throw new IllegalStateException("Служба записи уже привязана.");
 
-        bindToService();
+        bindToService();*/
     }
 
     @Override
@@ -123,6 +123,8 @@ public class SimpleAudioRecorder
     // Главные методы
     @Override
     public void startRecording(@NonNull String filePath) {
+
+        bindToService();
 
         if (!mBoundServiceWasCalled)
             throw new IllegalStateException("Не был вызван метод onStart()." +
@@ -139,10 +141,10 @@ public class SimpleAudioRecorder
     @Override
     public void stopRecording() {
         if (null != mRecorderService)
-            if (mRecorderService.isRecordingNow()) {
+            if (mRecorderService.isRecordingNow())
                 mRecorderService.stopRecording();
-                unbindFromService();
-            }
+
+        unbindFromService();
     }
 
     @Override
