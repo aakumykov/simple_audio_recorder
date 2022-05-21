@@ -106,6 +106,10 @@ public class SimpleAudioRecorder
     // Жизненный цикл Activity
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
+
+        if (null != mRecorderService)
+            throw new IllegalStateException("Служба записи уже привязана.");
+
         bindToService();
     }
 
@@ -118,8 +122,14 @@ public class SimpleAudioRecorder
     // Главные методы
     @Override
     public void startRecording(@NonNull String filePath) {
+
+        if (null == mRecorderService)
+            throw new IllegalStateException("Служба записи не привязана (mRecorderService == null)." +
+                        "Необходимо подписать этот объект на жизненный цикл Activity или " +
+                        "вызывать методы onStart() и onStop() внучную (в соотвутствующих методах ЖЦ Activity).");
+
         mRecorderServiceIntent.putExtra(RecorderService.EXTRA_FILE_PATH, filePath);
-        bindToService();
+
         mContext.startService(mRecorderServiceIntent);
     }
 
@@ -141,14 +151,10 @@ public class SimpleAudioRecorder
 
     // Внутренние методы
     private void bindToService() {
-//        Log.d(TAG, "bindToService()");
-        mContext.bindService(mRecorderServiceIntent,
-                mRecorderServiceConnection,
-                0/*Context.BIND_IMPORTANT*/);
+        mContext.bindService(mRecorderServiceIntent, mRecorderServiceConnection, 0);
     }
 
     private void unbindFromService() {
-//        Log.d(TAG, "unbindFromService()");
         mContext.unbindService(mRecorderServiceConnection);
     }
 
