@@ -125,9 +125,11 @@ public class SimpleAudioRecorder
     public void startRecording(@NonNull String filePath) {
 
         if (!mBoundServiceWasCalled)
-            throw new IllegalStateException("Служба записи не привязана (mRecorderService == null)." +
-                        "Необходимо подписать этот объект на жизненный цикл Activity или " +
-                        "вызывать методы onStart() и onStop() внучную (в соотвутствующих методах ЖЦ Activity).");
+            throw new IllegalStateException("Не был вызван метод onStart()." +
+                        "Необходимо подписать объект "+SimpleAudioRecorder.class.getSimpleName()+
+                        " на жизненный цикл Activity " +
+                        "или вызывать методы onStart() и onStop() внучную " +
+                        "(в соотвутствующих методах её жизненного цикла).");
 
         mRecorderServiceIntent.putExtra(RecorderService.EXTRA_FILE_PATH, filePath);
 
@@ -158,6 +160,7 @@ public class SimpleAudioRecorder
 
     private void unbindFromService() {
         mContext.unbindService(mRecorderServiceConnection);
+        mBoundServiceWasCalled = false;
     }
 
 }

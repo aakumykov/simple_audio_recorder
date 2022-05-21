@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.DefaultLifecycleObserver;
 
 import com.github.aakumykov.simple_audio_recorder.databinding.ActivityDemoBinding;
 import com.github.aakumykov.simple_audio_recorder_module.SimpleAudioRecorder;
@@ -82,7 +81,7 @@ public class DemoActivity extends AppCompatActivity {
 
         mSimpleAudioRecorder = new SimpleAudioRecorder(this, mSimpleAudioRecorderCallbacks);
 
-        getLifecycle().addObserver((DefaultLifecycleObserver) mSimpleAudioRecorder);
+//        getLifecycle().addObserver((DefaultLifecycleObserver) mSimpleAudioRecorder);
 
         if (null != savedInstanceState) {
             showInfo(savedInstanceState.getString(KEY_INFO_VIEW_TEXT));
