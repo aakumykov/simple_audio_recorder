@@ -37,6 +37,7 @@ public class SimpleAudioRecorder
     @NonNull private final Context mContext;
     @NonNull private final iSimpleAudioRecorderCallbacks mCallbacks;
     @Nullable private String mFilePath;
+    private boolean mBoundServiceWasCalled = false;
 
 
     // TODO: идентичность коллбеков...
@@ -123,7 +124,7 @@ public class SimpleAudioRecorder
     @Override
     public void startRecording(@NonNull String filePath) {
 
-        if (null == mRecorderService)
+        if (!mBoundServiceWasCalled)
             throw new IllegalStateException("Служба записи не привязана (mRecorderService == null)." +
                         "Необходимо подписать этот объект на жизненный цикл Activity или " +
                         "вызывать методы onStart() и onStop() внучную (в соотвутствующих методах ЖЦ Activity).");
@@ -152,6 +153,7 @@ public class SimpleAudioRecorder
     // Внутренние методы
     private void bindToService() {
         mContext.bindService(mRecorderServiceIntent, mRecorderServiceConnection, 0);
+        mBoundServiceWasCalled = true;
     }
 
     private void unbindFromService() {
