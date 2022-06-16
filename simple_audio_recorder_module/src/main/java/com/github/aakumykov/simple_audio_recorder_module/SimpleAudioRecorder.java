@@ -37,6 +37,7 @@ public class SimpleAudioRecorder
     @NonNull private final Context mContext;
     @NonNull private final iSimpleAudioRecorderCallbacks mCallbacks;
     @Nullable private String mFilePath;
+    private boolean mBoundServiceWasCalled = false;
 
 
     // TODO: идентичность коллбеков...
@@ -106,7 +107,11 @@ public class SimpleAudioRecorder
     // Жизненный цикл Activity
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
-        bindToService();
+
+        /*if (null != mRecorderService)
+            throw new IllegalStateException("Служба записи уже привязана.");
+
+        bindToService();*/
     }
 
     @Override
@@ -118,8 +123,18 @@ public class SimpleAudioRecorder
     // Главные методы
     @Override
     public void startRecording(@NonNull String filePath) {
-        mRecorderServiceIntent.putExtra(RecorderService.EXTRA_FILE_PATH, filePath);
+
         bindToService();
+
+        if (!mBoundServiceWasCalled)
+            throw new IllegalStateException("Не был вызван метод onStart()." +
+                        "Необходимо подписать объект "+SimpleAudioRecorder.class.getSimpleName()+
+                        " на жизненный цикл Activity " +
+                        "или вызывать методы onStart() и onStop() внучную " +
+                        "(в соотвутствующих методах её жизненного цикла).");
+
+        mRecorderServiceIntent.putExtra(RecorderService.EXTRA_FILE_PATH, filePath);
+
         mContext.startService(mRecorderServiceIntent);
     }
 
@@ -128,6 +143,8 @@ public class SimpleAudioRecorder
         if (null != mRecorderService)
             if (mRecorderService.isRecordingNow())
                 mRecorderService.stopRecording();
+
+        unbindFromService();
     }
 
     @Override
@@ -141,15 +158,13 @@ public class SimpleAudioRecorder
 
     // Внутренние методы
     private void bindToService() {
-//        Log.d(TAG, "bindToService()");
-        mContext.bindService(mRecorderServiceIntent,
-                mRecorderServiceConnection,
-                0/*Context.BIND_IMPORTANT*/);
+        mContext.bindService(mRecorderServiceIntent, mRecorderServiceConnection, 0);
+        mBoundServiceWasCalled = true;
     }
 
     private void unbindFromService() {
-//        Log.d(TAG, "unbindFromService()");
         mContext.unbindService(mRecorderServiceConnection);
+        mBoundServiceWasCalled = false;
     }
 
 }
