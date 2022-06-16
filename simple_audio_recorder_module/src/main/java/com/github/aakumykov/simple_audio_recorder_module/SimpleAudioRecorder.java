@@ -159,11 +159,14 @@ public class SimpleAudioRecorder
     // Внутренние методы
     private void bindToService() {
         mContext.bindService(mRecorderServiceIntent, mRecorderServiceConnection, 0);
+
         mBoundServiceWasCalled = true;
     }
 
     private void unbindFromService() {
-        mContext.unbindService(mRecorderServiceConnection);
+        if (mBoundServiceWasCalled)
+            mContext.unbindService(mRecorderServiceConnection);
+
         mBoundServiceWasCalled = false;
     }
 
