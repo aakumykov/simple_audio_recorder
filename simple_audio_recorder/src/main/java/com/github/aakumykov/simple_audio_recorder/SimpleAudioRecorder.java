@@ -56,10 +56,6 @@ public class SimpleAudioRecorder implements AudioRecorder {
             mCallbacks.onRecordingStarted();
     }
 
-    private void prepareRecorder() {
-        mRecorder = OmRecorder.wav(defaultPullTransport(), mTargetFile);
-    }
-
     @Override
     public void stopRecording() {
 
@@ -79,6 +75,9 @@ public class SimpleAudioRecorder implements AudioRecorder {
             if (null != mCallbacks)
                 mCallbacks.onRecordingError(e);
         }
+        finally {
+            mRecorder = null;
+        }
     }
 
     @Override
@@ -86,6 +85,11 @@ public class SimpleAudioRecorder implements AudioRecorder {
         return mIsRecordingNow.get();
     }
 
+
+
+    private void prepareRecorder() {
+        mRecorder = OmRecorder.wav(defaultPullTransport(), mTargetFile);
+    }
 
 
     private PullTransport defaultPullTransport() {
