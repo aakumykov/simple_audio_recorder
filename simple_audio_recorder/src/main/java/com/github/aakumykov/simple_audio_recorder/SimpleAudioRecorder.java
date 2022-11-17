@@ -25,24 +25,11 @@ import omrecorder.Recorder;
 public class SimpleAudioRecorder implements AudioRecorder {
 
     private static final String TAG = SimpleAudioRecorder.class.getSimpleName();
-    private final Recorder mRecorder;
+    private Recorder mRecorder;
     private final AtomicBoolean mIsRecordingNow = new AtomicBoolean(false);
-    @Nullable private File mTargetFile;
+    private File mTargetFile;
     @Nullable private Callbacks mCallbacks;
 
-
-    public SimpleAudioRecorder() {
-        mRecorder = OmRecorder.wav(
-                new PullTransport.Default(mic(), new PullTransport.OnAudioChunkPulledListener() {
-                    @Override public void onAudioChunkPulled(AudioChunk audioChunk) {
-                        double amplitude = audioChunk.maxAmplitude();
-                        if (null != mCallbacks)
-                            mCallbacks.onSoundAmplitudeChanged(amplitude);
-                    }
-                }),
-                mTargetFile
-        );
-    }
 
 
     @Override
@@ -53,15 +40,15 @@ public class SimpleAudioRecorder implements AudioRecorder {
     @Override
     public void startRecording(@NonNull File targetFile) throws NullPointerException {
 
-//        if (null == targetFile)
-//            throw new NullPointerException("Аргумент не может быть null");
-
         if (mIsRecordingNow.get()) {
             Log.w(TAG, "startRecording: запись уже идёт");
             return;
         }
 
         mTargetFile = targetFile;
+
+        prepareRecorder();
+
         mRecorder.startRecording();
         mIsRecordingNow.set(true);
 
@@ -69,10 +56,17 @@ public class SimpleAudioRecorder implements AudioRecorder {
             mCallbacks.onRecordingStarted();
     }
 
+    private void prepareRecorder() {
+        mRecorder = OmRecorder.wav(defaultPullTransport(), mTargetFile);
+    }
+
     @Override
     public void stopRecording() {
-        if (!mIsRecordingNow.get())
+
+        if (!mIsRecordingNow.get()) {
+            Log.w(TAG, "stopRecording: запись не осуществляется!");
             return;
+        }
 
         try {
             mRecorder.stopRecording();
@@ -92,6 +86,17 @@ public class SimpleAudioRecorder implements AudioRecorder {
         return mIsRecordingNow.get();
     }
 
+
+
+    private PullTransport defaultPullTransport() {
+        return new PullTransport.Default(mic(), new PullTransport.OnAudioChunkPulledListener() {
+            @Override public void onAudioChunkPulled(AudioChunk audioChunk) {
+                double amplitude = audioChunk.maxAmplitude();
+                if (null != mCallbacks)
+                    mCallbacks.onSoundAmplitudeChanged(amplitude);
+            }
+        });
+    }
 
     @NonNull
     private PullableSource.Default mic() {
