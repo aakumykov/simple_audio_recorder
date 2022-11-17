@@ -2,4 +2,5 @@
     <string name="app_name">Простой аудио рекодер</string>
     <string name="description_record_button">Кнопка записи</string>
     <string name="error">Ошибка</string>
+    <string name="info">Информация</string>
 </resources>

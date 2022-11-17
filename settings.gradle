@@ -14,5 +14,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "simple_audio_recorder"
-include ':app'
 include ':simple_audio_recorder'

@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
     public void onRecordingStarted() {
         showStopRecordingButton();
         showAmplitudeView();
+        hideInfo();
         hideError();
     }
 
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
     public void onRecordingFinished(@NonNull File recordedFile) {
         showStartRecordingButton();
         hideAmplitudeView();
+        showInfo(recordedFile.getAbsolutePath());
     }
 
     @Override
@@ -104,11 +106,22 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
 
 
     private void showStopRecordingButton() {
-        mBinding.recordButton.setImageResource(R.drawable.ic_record_start);
+        mBinding.recordButton.setImageResource(R.drawable.ic_record_stop);
     }
 
     private void showStartRecordingButton() {
         mBinding.recordButton.setImageResource(R.drawable.ic_record_start);
+    }
+
+
+    private void showInfo(String text) {
+        mBinding.infoView.setText(text);
+        mBinding.infoView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideInfo() {
+        mBinding.infoView.setText("");
+        mBinding.infoView.setVisibility(View.GONE);
     }
 
     private void showError(Exception e) {
