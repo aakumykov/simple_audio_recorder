@@ -1,4 +1,4 @@
-package com.gitlab.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder;
 
 import android.Manifest;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.aakumykov.simple_audio_recorder.databinding.ActivityMainBinding;
 import com.gitlab.aakumykov.exception_utils_module.ExceptionUtils;
-import com.gitlab.aakumykov.simple_audio_recorder.databinding.ActivityMainBinding;
 
 import java.io.File;
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
 
 
     private void showStopRecordingButton() {
-        mBinding.recordButton.setImageResource(R.drawable.ic_record_stop);
+        mBinding.recordButton.setImageResource(R.drawable.ic_record_start);
     }
 
     private void showStartRecordingButton() {

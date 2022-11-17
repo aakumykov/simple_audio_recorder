@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.gitlab.aakumykov.simple_audio_recorder'
+    namespace 'com.github.aakumykov.simple_audio_recorder'
     compileSdk 32
 
     defaultConfig {

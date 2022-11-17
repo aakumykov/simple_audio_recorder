@@ -1,4 +1,4 @@
-package com.gitlab.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder;
 
 import androidx.annotation.NonNull;
 

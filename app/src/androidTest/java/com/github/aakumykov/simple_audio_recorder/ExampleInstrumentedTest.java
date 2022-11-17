@@ -1,4 +1,4 @@
-package com.gitlab.aakumykov.simple_audio_recorder;
+package com.github.aakumykov.simple_audio_recorder;
 
 import static org.junit.Assert.*;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.gitlab.aakumykov.simple_audio_recorder.test", appContext.getPackageName());
+        assertEquals("com.github.aakumykov.simple_audio_recorder", appContext.getPackageName());
     }
 }
