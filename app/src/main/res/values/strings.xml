@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">simple_audio_recorder</string>
+    <string name="app_name">Простой аудио рекодер</string>
+    <string name="description_record_button">Кнопка записи</string>
+    <string name="error">Ошибка</string>
 </resources>

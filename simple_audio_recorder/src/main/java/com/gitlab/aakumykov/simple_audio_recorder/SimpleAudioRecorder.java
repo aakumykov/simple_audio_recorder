@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import com.gitlab.aakumykov.exception_utils_module.ExceptionUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -52,13 +51,10 @@ public class SimpleAudioRecorder implements AudioRecorder {
     }
 
     @Override
-    public void startRecording(@NonNull File targetFile) throws NullPointerException, FileNotFoundException {
+    public void startRecording(@NonNull File targetFile) throws NullPointerException {
 
-        if (null == targetFile)
-            throw new NullPointerException("Аргумент не может быть null");
-
-        if (!targetFile.exists())
-            throw new FileNotFoundException("Файл не найден: "+targetFile.getAbsolutePath());
+//        if (null == targetFile)
+//            throw new NullPointerException("Аргумент не может быть null");
 
         if (mIsRecordingNow.get()) {
             Log.w(TAG, "startRecording: запись уже идёт");

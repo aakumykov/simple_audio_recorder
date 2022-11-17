@@ -3,12 +3,11 @@ package com.gitlab.aakumykov.simple_audio_recorder;
 import androidx.annotation.NonNull;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 public interface AudioRecorder {
 
     void setCallbacks(@NonNull Callbacks callbacks);
-    void startRecording(@NonNull File targetFile) throws NullPointerException, FileNotFoundException;
+    void startRecording(@NonNull File targetFile) throws NullPointerException;
     void stopRecording();
     boolean isRecordingNow();
 

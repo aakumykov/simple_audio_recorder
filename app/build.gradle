@@ -40,5 +40,8 @@ dependencies {
 //    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
+    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.9.1"
+    annotationProcessor "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.9.1"
 
+    implementation 'com.github.aakumykov:exception_utils:0.4'
 }
