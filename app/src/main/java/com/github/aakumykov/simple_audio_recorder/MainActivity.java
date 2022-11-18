@@ -127,11 +127,24 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
     }
 
     private void showAmplitudeView() {
-        mBinding.amplitudeView.setVisibility(View.VISIBLE);
+        mBinding.amplitudeView.animate()
+                .alpha(1f)
+                .setDuration(200)
+                .withStartAction(() -> {
+                    mBinding.amplitudeView.setAlpha(0f);
+                    mBinding.amplitudeView.setVisibility(View.VISIBLE);
+                })
+                .start();
     }
 
     private void hideAmplitudeView() {
-        mBinding.amplitudeView.setVisibility(View.GONE);
+        mBinding.amplitudeView.animate()
+                .alpha(0f)
+                .setDuration(100)
+                .withEndAction(() -> {
+                    mBinding.amplitudeView.setVisibility(View.GONE);
+                })
+                .start();
     }
 
     private void displayAmplitude(double amplitudeValue) {
