@@ -7,7 +7,7 @@ import java.io.File;
 public interface AudioRecorder {
 
     void setCallbacks(@NonNull Callbacks callbacks);
-    void startRecording(@NonNull File targetFile) throws NullPointerException;
+    void startRecording(@NonNull File targetFile) throws Exception;
     void stopRecording();
     boolean isRecordingNow();
 
