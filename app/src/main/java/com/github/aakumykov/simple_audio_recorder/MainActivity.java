@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements AudioRecorder.Cal
 
 
     private void showStopRecordingButton() {
-        mBinding.recordButton.setImageResource(R.drawable.ic_record_start);
+        mBinding.recordButton.setImageResource(R.drawable.ic_record_stop);
     }
 
     private void showStartRecordingButton() {
