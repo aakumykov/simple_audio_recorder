@@ -38,7 +38,7 @@ public class SimpleAudioRecorder implements AudioRecorder {
     }
 
     @Override
-    public void startRecording(@NonNull File targetFile) throws NullPointerException {
+    public void startRecording(@NonNull File targetFile) throws Exception {
 
         if (mIsRecordingNow.get()) {
             Log.w(TAG, "startRecording: запись уже идёт");
